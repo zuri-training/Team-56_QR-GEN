@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'knox',
     'users',
     'qr_gen'
+    'qr_code',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'qrSwift.urls'
 
 
 REST_FRAMEWORK = {
-  
+   "DEFAULT_AUTHENTICATION_CLASSES": ("knox.auth.TokenAuthentication", )
 }
 
 TEMPLATES = [
@@ -133,7 +134,3 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": ("knox.auth.TokenAuthentication", )
-}

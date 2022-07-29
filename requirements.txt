@@ -3,11 +3,15 @@ backports.zoneinfo==0.2.1
 cffi==1.15.1
 cryptography==37.0.4
 Django==4.0.6
+django-qr-code==3.1.1
 django-rest-knox==4.2.0
 djangorestframework==3.13.1
 Pillow==9.2.0
 pycparser==2.21
+pydantic==1.9.1
 python-dotenv==0.20.0
 pytz==2022.1
 qrcode==7.3.1
+segno==1.5.2
 sqlparse==0.4.2
+typing_extensions==4.3.0
