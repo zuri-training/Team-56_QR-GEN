@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'knox',
     'users',
-    
+    'qr_gen'
 ]
 
 MIDDLEWARE = [
