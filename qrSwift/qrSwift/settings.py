@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'knox',
     'users',
-    'qr_gen'
+    'qr_gen',
+    
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": ("knox.auth.TokenAuthentication", )
 }
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
