@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'knox',
     'users',
-    'qr_gen'
+    'qr_gen',
     'qr_code',
 ]
 
@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'qrSwift.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'mydb.sqlite3',
     }
 }
 
@@ -134,3 +134,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
