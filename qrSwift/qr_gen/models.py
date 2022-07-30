@@ -3,7 +3,7 @@ import qrcode
 from PIL import Image, ImageDraw
 from io import BytesIO
 from django.core.files import File
-
+import random
 # Create your models here.
 class qr_gen(models.Model):
     name= models.CharField (max_length=200)
