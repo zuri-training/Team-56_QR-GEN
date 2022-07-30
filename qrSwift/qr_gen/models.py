@@ -1,5 +1,7 @@
 from django.db import models
 
+
+
 # Create your models here.
 
 class Text(models.Model):
@@ -44,3 +46,18 @@ class WifiConfig(models.Model):
     authentication = ""
     password = ""
     hidden = False
+
+
+
+class QrCode(models.Model):
+    user = ""
+    qrId =""
+    
+
+    def QrInput():
+        pass
+
+
+    generated_qr = ""
+
+    created_timestamp =""
