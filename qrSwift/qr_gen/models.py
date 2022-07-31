@@ -5,6 +5,7 @@ from PIL import Image, ImageDraw
 from io import BytesIO
 from django.core.files import File
 from datetime import date
+import random
 
 # Create your models here.
 class Qr(models.Model):
