@@ -17,6 +17,7 @@ class CreateText_QRSerializer(serializers.ModelSerializer):
         text = validated_data.get("text")
         generated_qr = validated_data.get("generated_qr")
         created_timestamp = validated_data.get("created_timestamp")
+        
 
 
         text_qr = models.Text.objects.create(
