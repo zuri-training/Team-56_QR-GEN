@@ -10,7 +10,8 @@ from django.core.files.base import ContentFile
 from segno import QRCode
 
 
-# Create your models here.
+
+
 
 #Models for generating qr codes 
 
