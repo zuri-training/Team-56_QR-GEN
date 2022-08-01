@@ -9,11 +9,11 @@ class CreateText_QRSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.TextAndUrl
-        fields = ("user","qr_name", "text", "generated_qr", "created_timestamp")
+        fields = ("qr_name", "text", "generated_qr", "created_timestamp")
 
 
     def create(self, validated_data):
-        user = validated_data.get("user")
+        
         qr_name = validated_data.get("qr_name")
         text = validated_data.get("text")
         generated_qr = validated_data.get("generated_qr")
@@ -22,7 +22,7 @@ class CreateText_QRSerializer(serializers.ModelSerializer):
 
 
         text_qr = models.Text.objects.create(
-           user = user,
+          
            qr_name = qr_name,
            text= text,
            generated_qr = generated_qr,
