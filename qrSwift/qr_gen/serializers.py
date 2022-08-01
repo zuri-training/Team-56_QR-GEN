@@ -8,7 +8,7 @@ from rest_framework import serializers
 class CreateText_QRSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = models.Text
+        model = models.TextAndUrl
         fields = ("user", "text", "generated_qr", "created_timestamp")
 
 
