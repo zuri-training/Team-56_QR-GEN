@@ -35,7 +35,7 @@ class TextAndUrl(models.Model):
         
         buff = maker.io.BytesIO()
 
-        fname = f'qr_code-{self.name}' + '.png'
+        fname = f'qr_code-{self.qr_name}' + '.png'
        
         qrcode_img.save(buff, kind="png")
         
@@ -79,7 +79,7 @@ class SendEmail(models.Model):
 
         buff = maker.io.BytesIO()
 
-        fname = f'qr_code-{self.name}' + '.png'
+        fname = f'qr_code-{self.qr_name}' + '.png'
        
         qrcode_img.save(buff, kind="png")
         
@@ -123,7 +123,7 @@ class MeCard(models.Model):
         
         buff = maker.io.BytesIO()
 
-        fname = f'qr_code-{self.name}' + '.png'
+        fname = f'qr_code-{self.qr_name}' + '.png'
        
         qrcode_img.save(buff, kind="png")
         
@@ -163,7 +163,7 @@ class WifiConfig(models.Model):
 
         buff = maker.io.BytesIO()
 
-        fname = f'qr_code-{self.name}' + '.png'
+        fname = f'qr_code-{self.qr_name}' + '.png'
        
         qrcode_img.save(buff, kind="png")
         
@@ -199,7 +199,7 @@ class Coordinates(models.Model):
 
         buff = maker.io.BytesIO()
 
-        fname = f'qr_code-{self.name}' + '.png'
+        fname = f'qr_code-{self.qr_name}' + '.png'
        
         qrcode_img.save(buff, kind="png")
         
