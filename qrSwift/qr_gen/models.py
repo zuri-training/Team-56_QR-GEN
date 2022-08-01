@@ -2,8 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from qr_code.qrcode import maker
-from qr_code.templatetags.qr_code import  qr_for_mecard
-from qr_code.qrcode.utils import QRCodeOptions, MeCard
+from qr_code.qrcode.utils import QRCodeOptions,
 
 from segno import helpers
 
@@ -18,6 +17,7 @@ from segno import QRCode
 
 class TextAndUrl(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200, default=date.today())
 
     text = models.TextField()
 
