@@ -2,8 +2,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from qr_code.qrcode import maker
-from qr_code.qrcode.utils import QRCodeOptions,
-
+from qr_code.qrcode.utils import QRCodeOptions
+from datetime import date
 from segno import helpers
 
 from django.core.files.base import ContentFile
@@ -35,7 +35,7 @@ class TextAndUrl(models.Model):
         
         buff = maker.io.BytesIO()
 
-        fname = f'qr_code-{self.id}' + '.png'
+        fname = f'qr_code-{self.name}' + '.png'
        
         qrcode_img.save(buff, kind="png")
         
@@ -54,7 +54,7 @@ class TextAndUrl(models.Model):
 
 class SendEmail(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    name = models.CharField(max_length=200, default=date.today())
     to = models.EmailField()
     cc = models.CharField(max_length=1000)
     bcc = models.EmailField()
@@ -79,7 +79,7 @@ class SendEmail(models.Model):
 
         buff = maker.io.BytesIO()
 
-        fname = f'qr_code-{self.id}' + '.png'
+        fname = f'qr_code-{self.name}' + '.png'
        
         qrcode_img.save(buff, kind="png")
         
@@ -97,7 +97,7 @@ class SendEmail(models.Model):
 
 class MeCard(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    name = models.CharField(max_length=200, default=date.today())
     name = models.CharField(max_length=500)
     email = models.EmailField()
     phone = models.CharField(max_length=100)
@@ -123,7 +123,7 @@ class MeCard(models.Model):
         
         buff = maker.io.BytesIO()
 
-        fname = f'qr_code-{self.id}' + '.png'
+        fname = f'qr_code-{self.name}' + '.png'
        
         qrcode_img.save(buff, kind="png")
         
@@ -140,7 +140,7 @@ class MeCard(models.Model):
 
 class WifiConfig(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    name = models.CharField(max_length=200, default=date.today())
     ssid = models.CharField(max_length=100)
     authentication = models.CharField(max_length=250)
     password = models.CharField(max_length=400)
@@ -163,7 +163,7 @@ class WifiConfig(models.Model):
 
         buff = maker.io.BytesIO()
 
-        fname = f'qr_code-{self.id}' + '.png'
+        fname = f'qr_code-{self.name}' + '.png'
        
         qrcode_img.save(buff, kind="png")
         
@@ -177,7 +177,7 @@ class WifiConfig(models.Model):
 
 class Coordinates(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    name = models.CharField(max_length=200, default=date.today())
     latitude = models.FloatField()
     longitude = models.FloatField()
 
@@ -199,7 +199,7 @@ class Coordinates(models.Model):
 
         buff = maker.io.BytesIO()
 
-        fname = f'qr_code-{self.id}' + '.png'
+        fname = f'qr_code-{self.name}' + '.png'
        
         qrcode_img.save(buff, kind="png")
         
