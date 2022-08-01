@@ -21,3 +21,5 @@ urlpatterns = [
     path("api/", include("users.urls")),
     path("api/", include("qr_gen.urls"))
 ]
+
+

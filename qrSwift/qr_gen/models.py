@@ -17,7 +17,7 @@ from segno import QRCode
 
 class TextAndUrl(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200, default=date.today())
+    qr_name = models.CharField(max_length=200, default=date.today())
 
     text = models.TextField()
 
@@ -54,7 +54,7 @@ class TextAndUrl(models.Model):
 
 class SendEmail(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200, default=date.today())
+    qr_name = models.CharField(max_length=200, default=date.today())
     to = models.EmailField()
     cc = models.CharField(max_length=1000)
     bcc = models.EmailField()
@@ -97,7 +97,7 @@ class SendEmail(models.Model):
 
 class MeCard(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200, default=date.today())
+    qr_name = models.CharField(max_length=200, default=date.today())
     name = models.CharField(max_length=500)
     email = models.EmailField()
     phone = models.CharField(max_length=100)
@@ -140,7 +140,7 @@ class MeCard(models.Model):
 
 class WifiConfig(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200, default=date.today())
+    qr_name = models.CharField(max_length=200, default=date.today())
     ssid = models.CharField(max_length=100)
     authentication = models.CharField(max_length=250)
     password = models.CharField(max_length=400)
@@ -177,7 +177,7 @@ class WifiConfig(models.Model):
 
 class Coordinates(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200, default=date.today())
+    qr_name = models.CharField(max_length=200, default=date.today())
     latitude = models.FloatField()
     longitude = models.FloatField()
 
