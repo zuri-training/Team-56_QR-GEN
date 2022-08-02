@@ -21,6 +21,7 @@ def create_qr(request):
         qr_code = serializer.save()
         data = Qr.objects.get(id=int(str(qr_code)))
 
+        print(serializer.data)
         return Response({"res": "Qr code  created", "qr": {"id": data.id, "url": data.qr_code.url, "content": data.content, "name": data.name}}, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
