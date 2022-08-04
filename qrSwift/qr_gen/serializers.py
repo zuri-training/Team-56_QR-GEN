@@ -4,48 +4,45 @@ from rest_framework import serializers
 from .models import Qr
 from .enums import QrType
 
-class QrSerializers(serializers.Serializer):
-    qr_type = serializers.ChoiceField(choices=["URL", "WIFI"])
+class QrSerializersText(serializers.Serializer):
+    name = serializers.CharField(max_length=200, required=False)
+    qr_type = serializers.ChoiceField(choices=["URL", "WIFI", "CARD"])
     content = serializers.CharField(max_length=200, required=False)
+    id = serializers.IntegerField(required=False)
+    qr_code = serializers.ImageField(required=False)
+
+    def create(self, validated_data):
+        return Qr.objects.create(**validated_data)
+
+
+class QrWifiSerializers(serializers.Serializer):
+    name = serializers.CharField(max_length=200, required=False)
+    id = serializers.IntegerField(required=False)
+    qr_type = serializers.ChoiceField(choices=["URL", "WIFI", "CARD"])
+    qr_code = serializers.ImageField(required=False)
     ssid = serializers.CharField(max_length=200, required=False)
     authentication = serializers.ChoiceField(choices=["WPA", "WEP"], required=False)
     password = serializers.CharField(max_length=400, required=False)
     hidden = serializers.BooleanField(required=False)
 
-    def validate(self, attrs):
+    def create(self, validated_data):
+        return Qr.objects.create(**validated_data)
 
-        try:
-            if attrs['qr_type'] == "URL" and not attrs["content"]:
-                raise serializers.ValidationError("Content is required")
-        except:
-            raise serializers.ValidationError({"error":"Content is required"})
-        
-        try:
-            if attrs['qr_type'] == "WIFI" and not attrs["ssid"]:
-                raise serializers.ValidationError({"error": "SSID is required"})
-        except:
-            raise serializers.ValidationError({"error": "SSID is required"})
 
-        try:
-            if attrs['qr_type'] == "WIFI" and not attrs["authentication"]:
-                raise serializers.ValidationError({"error": "Authentication is required"})
-        except:
-            raise serializers.ValidationError({"error": "Authentication is required"})
-
-        try:
-            if attrs['qr_type'] == "WIFI" and not attrs["password"]:
-                raise serializers.ValidationError({"error": "Password is required"})
-        except:
-            raise serializers.ValidationError({"error": "Password is required"})
-
-        # try:
-        #     if attrs['qr_type'] == "WIFI" and not attrs["hidden"]:
-        #         raise serializers.ValidationError({"error": "Hidden is required"})
-        # except:
-        #     raise serializers.ValidationError({"error": "Hidden is required"})
-
-        return super().validate(attrs)
-
+class QrMeCardSerializers(serializers.Serializer):
+    name = serializers.CharField(max_length=200, required=False)
+    id = serializers.IntegerField(required=False)
+    qr_type = serializers.ChoiceField(choices=["URL", "WIFI", "CARD"])
+    qr_code = serializers.ImageField(required=False)
+    firstname = serializers.CharField(max_length=200)
+    email = serializers.EmailField()
+    phone = serializers.CharField(max_length=100)
+    nickname = serializers.CharField(max_length=200)
+    birthday = serializers.DateField()
+    url = serializers.URLField()
+    city = serializers.CharField(max_length=100)
+    country = serializers.CharField(max_length=100)
 
     def create(self, validated_data):
         return Qr.objects.create(**validated_data)
+
