@@ -10,7 +10,7 @@ class QrSerializersText(serializers.Serializer):
     content = serializers.CharField(max_length=200, required=False)
     id = serializers.IntegerField(required=False)
     qr_code = serializers.ImageField(required=False)
-
+    
     def create(self, validated_data):
         return Qr.objects.create(**validated_data)
 
