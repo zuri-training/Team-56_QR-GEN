@@ -6,6 +6,7 @@ from .serializers import RegisterSerializer
 
 def serialize_user(user):
     return {
+       
         "username": user.username,
         "email": user.email,
         "first_name": user.first_name,
@@ -19,7 +20,11 @@ def login(request):
     user = serializer.validated_data['user']
     _, token = AuthToken.objects.create(user)
     return Response({
-        'user_data': serialize_user(user),
+        "username": user.username,
+        "email": user.email,
+        "first_name": user.first_name,
+        "last_name": user.last_name,
+        "user_id": user.id,
         'token': token
     })
         
@@ -32,6 +37,7 @@ def register(request):
         _, token = AuthToken.objects.create(user)
         return Response({
             "user_info": serialize_user(user),
+            "user_id": user.id,
             "token": token
         })
 
@@ -41,6 +47,7 @@ def get_user(request):
     user = request.user
     if user.is_authenticated:
         return Response({
-            'user_data': serialize_user(user)
+            'user_data': serialize_user(user),
+            "user_id": user.id,
         })
     return Response({})
